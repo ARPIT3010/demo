@@ -13,21 +13,18 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage('JaCoCo') {
-            steps {
-                echo 'Code Coverage'
-                jacoco()
-            }
-        }
-        stage('build') { 
-            steps { 
-               bat 'mvn install'
-            }
-        }
+       
         stage('Package') {
             steps {
                 echo 'Packaging'
                 bat 'mvn package -DskipTests'
+            }
+        }
+        
+         stage('JaCoCo') {
+            steps {
+                echo 'Code Coverage'
+                jacoco()
             }
         }
         stage("SonarQube analysis") {
