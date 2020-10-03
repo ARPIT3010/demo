@@ -47,6 +47,7 @@ pipeline {
     post {
         always {
             echo 'JENKINS PIPELINE'
+            archiveArtifacts artifacts: 'target/jacoco.exec', onlyIfSuccessful: true
         }
         success {
             echo 'JENKINS PIPELINE SUCCESSFUL'
